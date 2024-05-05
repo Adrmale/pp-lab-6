@@ -41,10 +41,23 @@ public class Main {
         System.out.println("Wartosc pensji wszystkich managerow: " + totalManagerSalary);
         System.out.println("Wartosc pensji wszytkich pracownikow : " + totalWorkerSalary);
 
+             List<Employee> matchingEmployees = new ArrayList<>();
+         
+
         for (Employee employee : employees) {
             if (employee.equals(worker5)) {
-                System.out.println("Znalezieni pasujący pracownicy: " + employee.getName());
+                matchingEmployees.add(employee);
             }
+        }
+
+        
+        if (!matchingEmployees.isEmpty()) {
+            System.out.println("Znaleziono pracowników o identycznym ID:");
+            for (Employee employee : matchingEmployees) {
+                System.out.println(" - " + employee.getName());
+            }
+        } else {
+            System.out.println("Nie znaleziono pracowników o podanym ID.");
         }
     }
 }
