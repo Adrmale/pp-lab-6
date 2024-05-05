@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import company.models.Worker;
 import company.models.Manager;
-import company.abstracts.Employee;
+import company.models.Worker;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -12,16 +11,14 @@ public class Main {
 
         Manager manager = new Manager("Michał", 20000, 5, "2020-10-05", "Menadzer");
 
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(worker1);
-        employees.add(worker2);
-        employees.add(worker3);
-        employees.add(worker4);
-        employees.add(manager);
+        System.out.println(worker1.getName() + " ma kod: " + worker1.hashCode());
+        System.out.println(worker2.getName() + " ma kod: " + worker2.hashCode());
+        System.out.println(worker3.getName() + " ma kod: " + worker3.hashCode());
+        System.out.println(worker4.getName() + " ma kod: " + worker4.hashCode());
+        System.out.println(manager.getName() + " ma kod: " + manager.hashCode());
 
-        for (Employee employee : employees) {
-            employee.work();
-            System.out.println("- " + employee.getName() + " (ID: " + employee.hashCode() + ", Pozycja: " + employee.getPosition() + ", Data_zatrudnienia: " + employee.getHireDate() + ", Wynagrodzenie: " + employee.getSalary() + ")");
-        }
+        System.out.println(worker1.getName() + " równa się z pracownikiem_2: " + worker1.equals(worker2));
+        System.out.println(worker1.getName() + " równa się z pracownikiem_3: " + worker1.equals(worker3));
+        System.out.println(worker1.getName() + " równa się z Manadzerem: " + worker1.equals(manager));
     }
 }
