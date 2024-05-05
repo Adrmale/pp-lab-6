@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
 import company.models.Manager;
 import company.models.Worker;
-
+import company.abstracts.Employee;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,17 +10,41 @@ public class Main {
         Worker worker2 = new Worker("Antek", 10000, 2, "2019-06-15", "Starszy Specjalista");
         Worker worker3 = new Worker("Wojtek", 14000, 3, "2024-05-05", "Średni Specjalista");
         Worker worker4 = new Worker("Jakub", 4500, 4, "2022-02-22", "Starszy Specjalista");
+        Worker worker5 = new Worker("Tomek", 2500, 2, "2023-06-30", "Software Engineer"); 
 
-        Manager manager = new Manager("Michał", 20000, 5, "2020-10-05", "Menadzer");
+        Manager manager1 = new Manager("Michal",20000 , 5, "2020-05-10", "Menadzer");
+        Manager manager2 = new Manager("Sara", 30000, 6, "2023-09-15", "Starszy Menadzer"); 
 
-        System.out.println(worker1.getName() + " ma kod: " + worker1.hashCode());
-        System.out.println(worker2.getName() + " ma kod: " + worker2.hashCode());
-        System.out.println(worker3.getName() + " ma kod: " + worker3.hashCode());
-        System.out.println(worker4.getName() + " ma kod: " + worker4.hashCode());
-        System.out.println(manager.getName() + " ma kod: " + manager.hashCode());
+        List<Employee> employees = new ArrayList<>();
+        employees.add(worker1);
+        employees.add(worker2);
+        employees.add(worker3);
+        employees.add(worker4);
+        employees.add(worker5); 
+        employees.add(manager1);
+        employees.add(manager2); 
 
-        System.out.println(worker1.getName() + " równa się z pracownikiem_2: " + worker1.equals(worker2));
-        System.out.println(worker1.getName() + " równa się z pracownikiem_3: " + worker1.equals(worker3));
-        System.out.println(worker1.getName() + " równa się z Manadzerem: " + worker1.equals(manager));
+        double totalSalary = 0;
+        double totalManagerSalary = 0;
+        double totalWorkerSalary = 0;
+
+        for (Employee employee : employees) {
+            totalSalary += employee.getSalary();
+            if (employee instanceof Manager) {
+                totalManagerSalary += employee.getSalary();
+            } else if (employee instanceof Worker) {
+                totalWorkerSalary += employee.getSalary();
+            }
+        }
+
+        System.out.println("Wartosc pensji wszystkich w firmie: " + totalSalary);
+        System.out.println("Wartosc pensji wszystkich managerow: " + totalManagerSalary);
+        System.out.println("Wartosc pensji wszytkich pracownikow : " + totalWorkerSalary);
+
+        for (Employee employee : employees) {
+            if (employee.equals(worker5)) {
+                System.out.println("Znalezieni pasujący pracownicy: " + employee.getName());
+            }
+        }
     }
 }
